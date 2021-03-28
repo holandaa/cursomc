@@ -16,7 +16,7 @@ import com.holanda.cursomc.domain.Estado;
 import com.holanda.cursomc.domain.ItemPedido;
 import com.holanda.cursomc.domain.Pagamento;
 import com.holanda.cursomc.domain.PagamentoComBoleto;
-import com.holanda.cursomc.domain.PagamentoComCarto;
+import com.holanda.cursomc.domain.PagamentoComCartao;
 import com.holanda.cursomc.domain.Pedido;
 import com.holanda.cursomc.domain.Produto;
 import com.holanda.cursomc.domain.enums.EstadoPagamento;
@@ -26,7 +26,7 @@ import com.holanda.cursomc.repositories.CidadeRepository;
 import com.holanda.cursomc.repositories.ClienteRepository;
 import com.holanda.cursomc.repositories.EnderecoRepository;
 import com.holanda.cursomc.repositories.EstadoRepository;
-import com.holanda.cursomc.repositories.ItemPedidoRepositoryRepository;
+import com.holanda.cursomc.repositories.ItemPedidoRepository;
 import com.holanda.cursomc.repositories.PagamentoRepository;
 import com.holanda.cursomc.repositories.PedidoRepository;
 import com.holanda.cursomc.repositories.ProdutoRepository;
@@ -60,7 +60,7 @@ public class CursomcApplication implements CommandLineRunner {
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
 	@Autowired
-	private ItemPedidoRepositoryRepository itemPedidoRepositoryRepository;
+	private ItemPedidoRepository itemPedidoRepositoryRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -145,7 +145,7 @@ public class CursomcApplication implements CommandLineRunner {
 		Pedido ped1 = new Pedido(null, sdf.parse("30/09/2017 10:32"), cli1, e1);
 		Pedido ped2 = new Pedido(null, sdf.parse("10/10/2017 19:35"), cli1, e2);
 
-		Pagamento pagto1 = new PagamentoComCarto(null, EstadoPagamento.QUITADO, ped1, 6);
+		Pagamento pagto1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
 		ped1.setPagamento(pagto1);
 		Pagamento pagto2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, sdf.parse("20/10/2017 00:00"), null);
 		ped2.setPagamento(pagto2);
